@@ -48,3 +48,13 @@ for i in lists:
         len_min_slova=len(i)
         #print(i)
 print(f"довжина самого короткого слова {len_min_slova}")
+
+# У заданому тексті знищити всі слова з парними порядковими номерами
+amount = len(lists)-1
+print(amount,' = amount')
+for i in range(amount,0,-2):
+    #print(i, " ",lists[i])
+    lists.pop(i)
+print(len(lists),' після знищення з парним номером')
+
+
