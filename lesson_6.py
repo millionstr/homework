@@ -20,3 +20,14 @@ for i in range(A,Z+1):
 print(az,AZ)
 azAZ= az + AZ
 print(azAZ)
+slovo=list()
+lists=list()
+for i in text:
+    if i in azAZ:
+        slovo.append(i)
+    else:
+        if slovo:
+            #print(slovo)
+            lists.append(slovo)
+        slovo=list()
+print(lists, len(lists))
