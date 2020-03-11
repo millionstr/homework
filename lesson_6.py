@@ -49,6 +49,23 @@ for i in lists:
         #print(i)
 print(f"довжина самого короткого слова {len_min_slova}")
 
+# Визначити на яку букву починається більшість слів у заданому тексті
+def repeat_letters(letter,lists):
+    kilkist=0
+    for i in lists:
+        if i[0]==letter:
+            kilkist+=1
+    return (kilkist/len(lists)*100)
+
+max_letter=['a',0]
+for i in azAZ:
+    RL = repeat_letters(i, lists)
+    if max_letter[1] < RL:
+        max_letter[1]=RL
+        max_letter[0]=i
+
+print(f"найчастіше зустрічається літера {max_letter[0]} , {max_letter[1]:.2f} відсотків")
+
 # У заданому тексті знищити всі слова з парними порядковими номерами
 amount = len(lists)-1
 print(amount,' = amount')
@@ -57,4 +74,6 @@ for i in range(amount,0,-2):
     lists.pop(i)
 print(len(lists),' після знищення з парним номером')
 
-
+#  У заданому тексті поміняти місцями перше й останнє слова
+amount1 = len(lists)-1
+lists[0], lists[amount1] = lists[amount1], lists[0]
