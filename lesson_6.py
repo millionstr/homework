@@ -33,9 +33,18 @@ for i in text:
         slovo=list()
 print(lists, len(lists))
 
+# визначаємо скільки відсотків слів починається з заданої літери
 char_seach = input("введіть букву з якої починається слово: ")
 kilkist=0
 for i in lists:
     if i[0]==char_seach:
         kilkist+=1
-print(f"{kilkist/len(lists)*100:.2f}, відсотків слів починаються на букву {char_seach}")
+print(f"{kilkist/len(lists)*100:.2f} відсотків слів починаються на букву <{char_seach}>")
+
+# визначаємо довжину найкоротшого слова в тексті
+len_min_slova=len(lists[0])
+for i in lists:
+    if len(i)<len_min_slova:
+        len_min_slova=len(i)
+        #print(i)
+print(f"довжина самого короткого слова {len_min_slova}")
