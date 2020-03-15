@@ -5,14 +5,24 @@ units_1_9 = ["нуль","один","два","три","чотири","п'ять",
 units_10_19 = ["десять","одинадцять","дванадцять","тринадцять","чотирнадцять",\
         "п'ятнадцять","шістнадцять","сімнадцять","вісімнадцять","дев'ятнадцять"]
 tens = ["двадцять","тридцять","сорок","п'ятдесят","шістдесят","сімдесят","вісімдесят","дев'яносто"]
-hundreds = ["сто","двісті","триста","чотириста","п'ятсот","шістсот","сімсот","вісімсот","дев'ятсот"]
+hundreds = ["","сто","двісті","триста","чотириста","п'ятсот","шістсот","сімсот","вісімсот","дев'ятсот"]
 #print(units_1_9, units_10_19, tens, hundreds)
 numbers = int(input("введіть ціле число від 0 до 1000 : "))
-if numbers < 10:
-    print(units_1_9[numbers])
-elif 9 < numbers < 20:
+variant = 0
+print(hundreds[(numbers//100)])
+if 9 < (numbers % 100) < 20:
+    print(units_10_19[numbers%100 - 10])
+elif 19 < numbers % 100 < 100:
+    print(tens[(numbers%100)//10-2])
+    print(units_1_9[numbers%10])
+"""
+if 9 < numbers < 20:
     print(units_10_19[numbers - 10])
+    variant = 1
+elif (numbers % 100) < 10:
+    print(units_1_9[numbers % 100])
 elif 19 < numbers < 99:
     print(tens[numbers//10-2])
 elif 99 < numbers < 1000:
-    print(hundreds[(numbers//100)-1])
+    print(hundreds[(numbers//100)])
+"""
