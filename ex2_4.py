@@ -5,3 +5,9 @@
     - кожне друге число має бути від'ємне.
     - визначити скільки елементів масиву дорівнюють числу введеному користувачем.
 """
+import random
+lists = list()
+for i in range(10):
+    lists.append(random.randint(-10,-1))
+    lists.append(random.randint(1,10))
+print(lists, len(lists))
