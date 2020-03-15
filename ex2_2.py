@@ -7,13 +7,15 @@ units_10_19 = ["десять","одинадцять","дванадцять","т�
 tens = ["двадцять","тридцять","сорок","п'ятдесят","шістдесят","сімдесят","вісімдесят","дев'яносто"]
 hundreds = ["","сто","двісті","триста","чотириста","п'ятсот","шістсот","сімсот","вісімсот","дев'ятсот"]
 #print(units_1_9, units_10_19, tens, hundreds)
-numbers = int(input("введіть ціле число від 0 до 1000 : "))
+numbers = int(input("введіть ціле число від 1 до 1000 : "))
 variant = 0
-print(hundreds[(numbers//100)], end=" ")
+print(hundreds[(numbers // 100)], end=" ")
 if 9 < (numbers % 100) < 20:
-    print(units_10_19[numbers%100 - 10])
+    print(units_10_19[numbers % 100 - 10])
+    variant = 1
 elif 19 < numbers % 100 < 100:
-    print(tens[(numbers%100)//10-2],end = " ")
-    print(units_1_9[numbers%10])
-elif numbers < 10:
-    print(units_1_9[numbers])
+    print(tens[(numbers % 100) // 10 - 2], end = " ")
+    print(units_1_9[numbers % 10])
+    variant = 1
+elif numbers % 10 < 10 and variant ==0 :
+    print(units_1_9[numbers % 10])
