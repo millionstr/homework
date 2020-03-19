@@ -42,25 +42,42 @@ def pars_key(i):# парсимо key
         return (key[:-1],i)
 
 def pars_value(i):# парсимо Value
-    while 
-    pass
+    stroka = ""
+    i=i+1
+    while katalog[i] != ",":
+        if katalog[i] != "}":
+            stroka = stroka + katalog[i]
+            i += 1
+    stroka = stroka.strip()
+    stroka = stroka.strip("\"")
+    print("pars_value - strpka ",stroka)
+    return (stroka, i)
 
 def parse_dict(i):# парсимо словник
-    
+    single_dict = {}
     while katalog[i] != "}":
         key_dict = pars_key(i)
         i=key_dict[1]
         print("key_dict, i", key_dict, katalog[i])
-        pars_value(i)
-
+        value_dict = pars_value(i)
+        i=value_dict[1]
+        single_dict[key_dict[0]]=value_dict[0]
+        print("рядок словника-",single_dict)
         print("STOP")
+    return (single_dict, i)
 
 #-----------------основна прога-------------------
 with open("Car_Model_List.json", "r") as file:
     katalog = file.read()
 valmas=len(katalog)
+Car_Model_List=[]
 for i in range(valmas):
     if katalog[i] == "{":
-        parse_dict(i) 
+         end_dict=parse_dict(i)
+         i = end_dict[1]
+         Car_Model_List.append(end_dict[0])
+         print("Car_Model_List ",Car_Model_List)
+         print("STOP ALL")
+        
     else:
         print("else print: ",i, katalog[i], type(katalog[i]))
