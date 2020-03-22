@@ -20,7 +20,7 @@
 # tmp = file.read(6) читає перші 6 символів
 specSymbols = ("[" , "]" , "{" , "}" , "," , "\n", " ")
 
-#print(" objectId ","\t", " Year ","\t", " Make ","\t", " Model ","\t", " Category ")
+
 #print(ord("["), ord("{"), ord("\n"),ord(" "))
 kilkist = 0
 string = ""
@@ -85,5 +85,34 @@ while i< valmas:
          #print("STOP ALL")
         
     else:
-        print("else print: ",i, katalog[i], type(katalog[i]))
-print("парсинг закінчено", Car_Model_List)
+        pass
+        #print("else print: ",i, katalog[i], type(katalog[i]))
+print("парсинг закінчено")
+print(" objectId ","\t", " Year ","\t", " Make ","\t", " Model ","\t", " Category ")
+for i in Car_Model_List:
+    print(f"{i['Make']}, {i['Year']},{i['Model']}")
+
+print("LEVEL 2")
+while True:
+    print("1. Вивести список доступних брендів.\n\
+        2. Вивести список моделей вказаного бренду.\n\
+        3. Пошук моделі по імені.\n\
+        4. Знайти всі моделі виробника за вказаний проміжок часу.\n\
+        5. Вийти зменю. \n")
+    menu_namber = input("виберіть пункт меню (введіть ціле число від 1 до 5): ")
+    if menu_namber.isdigit():
+        if menu_namber == "5":
+            break
+        elif menu_namber == "1": 
+            print("ввели 1")
+        elif menu_namber == "2":
+            print("ввели 2")
+        elif menu_namber == "3":
+            print("ввели 3")
+        elif menu_namber == "4":
+            print("ввели 4")
+        else:
+            print("ви ввели число не з діапазону 1..5")
+            continue
+    else:
+        print("Помилка, введіть правильно число")
