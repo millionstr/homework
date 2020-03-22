@@ -41,7 +41,7 @@ def pars_key(i):# парсимо key
         #print("key = ", key[:-1])
         return (key[:-1],i)
 
-def pars_value(i):# парсимо Value
+def pars_value(i):# парсимо value
     stroka = ""
     i=i+1
     while katalog[i] != ",":
@@ -69,13 +69,39 @@ def parse_dict(i):# складаємо словник
         #print("STOP")
     return (single_dict, i+1)
 
-#-----------------основна прога-------------------
+def level2_menu1():
+    make = set()
+    for i in Car_Model_List:
+        make.add(i['Make'])
+    print(make)
+
+def level2_menu2():
+    model = set()
+    brend = input("введіть назву бренду, щоб побачити список моделей: ")
+    for i in Car_Model_List:
+        if brend == i["Make"]:
+            model.add(i["Model"])
+        else:
+            continue
+        
+    print(f"бренд {brend} має наступні моделі авто: \n {model}")
+
+def level2_menu3():
+    model = input("введіть назву моделі яку шукаєте: ")
+    for i in Car_Model_List:
+        if model == i["Model"]:
+            print(i)
+        else:
+            continue
+
+
+#-----------------          основна прога          -------------------
 with open("Car_Model_List_all.json", "r") as file:
     katalog = file.read()
 valmas=len(katalog)-1
 Car_Model_List=[]
 i = 0
-while i< valmas:
+while i < valmas:
     i += 1
     if katalog[i] == "{":
          end_dict=parse_dict(i)
@@ -92,27 +118,31 @@ print(" objectId ","\t", " Year ","\t", " Make ","\t", " Model ","\t", " Categor
 for i in Car_Model_List:
     print(f"{i['Make']}, {i['Year']},{i['Model']}")
 
-print("LEVEL 2")
+print("**********     LEVEL 2     **********")
 while True:
-    print("1. Вивести список доступних брендів.\n\
-        2. Вивести список моделей вказаного бренду.\n\
-        3. Пошук моделі по імені.\n\
-        4. Знайти всі моделі виробника за вказаний проміжок часу.\n\
-        5. Вийти зменю. \n")
+    print("""
+    1. Вивести список доступних брендів.\n\
+    2. Вивести список моделей вказаного бренду.\n\
+    3. Пошук моделі по імені.\n\
+    4. Знайти всі моделі виробника за вказаний проміжок часу.\n\
+    5. Вийти з меню. \n""")
     menu_namber = input("виберіть пункт меню (введіть ціле число від 1 до 5): ")
     if menu_namber.isdigit():
         if menu_namber == "5":
             break
         elif menu_namber == "1": 
-            print("ввели 1")
+            level2_menu1()
+            #print("menu 1")
         elif menu_namber == "2":
+            level2_menu2()
             print("ввели 2")
         elif menu_namber == "3":
+            level2_menu3()
             print("ввели 3")
         elif menu_namber == "4":
             print("ввели 4")
         else:
-            print("ви ввели число не з діапазону 1..5")
+            print("-----  ви ввели число не з діапазону 1..5  -----")
             continue
     else:
-        print("Помилка, введіть правильно число")
+        print("-----  Помилка, введіть правильно число  -----")
