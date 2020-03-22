@@ -94,6 +94,14 @@ def level2_menu3():
         else:
             continue
 
+def level2_menu4():
+    model = input("введіть назву моделі яку шукаєте: ")
+    year = input("введіть роки випуску через кому: ")
+    for i in Car_Model_List:
+        if (model == i["Model"]) and (i["Year"] in year):
+            print(i)
+        else:
+            continue
 
 #-----------------          основна прога          -------------------
 with open("Car_Model_List_all.json", "r") as file:
@@ -140,6 +148,7 @@ while True:
             level2_menu3()
             print("ввели 3")
         elif menu_namber == "4":
+            level2_menu4()
             print("ввели 4")
         else:
             print("-----  ви ввели число не з діапазону 1..5  -----")
