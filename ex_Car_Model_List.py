@@ -103,7 +103,7 @@ def level2_menu4():
         else:
             continue
 
-def level2_menu5():
+def level3_menu5():
     avto = input("введіть частково назву авто яке шукаєте: ")
     avto = avto.lower()
     for i in Car_Model_List:
@@ -113,6 +113,29 @@ def level2_menu5():
             print(i)
         else:
             continue
+
+def level3_menu6():
+    model = set()
+    brend = input("введіть назву бренду, щоб побачити список моделей: ")
+
+    for i in Car_Model_List:
+        if brend == i["Make"]:
+            model.add(i["Model"])
+        else:
+            continue
+
+    qw=None
+    item = 0
+    for i in model:
+        item = item + 1
+        if item == 6:
+            for i in range(45):
+                print()
+            item = 0
+        print(i)    
+    #print("нажміть пробіл, а потім Enter")
+    #print(f"бренд {brend} має наступні моделі авто: \n {model}")
+
 
 #-----------------          основна прога          -------------------
 with open("Car_Model_List_all.json", "r") as file:
@@ -145,10 +168,11 @@ while True:
     3. Пошук моделі по імені.\n\
     4. Знайти всі моделі виробника за вказаний проміжок часу.\n\
     5. Пошук по частковій назві авто або бренду.\n\
-    6. Вийти з меню. \n""")
-    menu_namber = input("виберіть пункт меню (введіть ціле число від 1 до 6): ")
+    6. Вивести список моделей вказаного бренду з пагінацією (5 авто на сторінку).\n\
+    7. Вийти з меню. \n""")
+    menu_namber = input("виберіть пункт меню (введіть ціле число від 1 до 7): ")
     if menu_namber.isdigit():
-        if menu_namber == "6":
+        if menu_namber == "7":
             break
         elif menu_namber == "1": 
             level2_menu1()
@@ -164,10 +188,13 @@ while True:
             print("ввели 4")
 # ***********  LEVEL 3  ***********
         elif menu_namber == "5":
-            level2_menu5()
+            level3_menu5()
             print("ввели 5")
+        elif menu_namber == "6":
+            level3_menu6()
+            print("ввели 6")
         else:
-            print("-----  ви ввели число не з діапазону 1..6  -----")
+            print("-----  ви ввели число не з діапазону 1..7  -----")
             continue
     else:
         print("-----  Помилка, введіть правильно число  -----")
