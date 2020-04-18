@@ -26,6 +26,7 @@ import json
 import random
 import keyboard
 import os
+import time
 class Taksi:
     __price = None
     def __init__(self, name, distans, price_min, price_max):
@@ -37,10 +38,16 @@ class Taksi:
     def price(self):
         __price = random.randint(self.price_min, self.price_max)*self.distans
         return __price
+            
+    def riding(self):
+        riding = 0
+        while riding < self.distans:
+            print(riding)
+            riding += 1
+            time.sleep(0.2)
+            os.system("CLS")
 
-class Car:
-    def __init__():
-        pass
+
 
 
 if __name__ == "__main__":
@@ -84,5 +91,5 @@ if __name__ == "__main__":
     print("\nДля початку подорожі нажміть Enter \n**********START**********")
     keyboard.wait('enter') #while not(keyboard.is_pressed('enter')):
     os.system('CLS')  # очищає консоль
-    
-    print("ви натиснули <Enter>") 
+    taksi.riding()
+    print(f"ви приїхали в точку призначення, з Вас {taksi.price()} USD") 
